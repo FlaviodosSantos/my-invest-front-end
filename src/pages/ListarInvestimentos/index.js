@@ -42,14 +42,14 @@ export default function ListarInvestimentos(){
                             <Column title="Quantidade de cotas" dataIndex="quantidadeCotas" key="quantidadeCotas"/>
                             <Column title="Data da compra" dataIndex="dataCompra" key="dataCompra"/>
                             <Column title="Remover" key="atualizar"
-                                render={( text, record ) => (<Button onClick={() => remover(record)}
+                                render={( text, record ) => (<Button onClick={() => remove(record)}
                                 type="primary">Remover</Button>)}
                             />
                             
                         </Table>
                 </div>
             </Content>
-            <Footer style={{ textAlign = 'center'}}>My Invest @2021</Footer>
+            <Footer style={{ textAlign : 'center'}}>My Invest @2021</Footer>
         </Layout>
         </div>
     );
