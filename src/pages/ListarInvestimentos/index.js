@@ -22,7 +22,7 @@ export default function ListarInvestimentos(){
             <div className="logo"/>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                 <Menu.Item key="1">
-                    <Link to="/cadastrar-investimento">
+                    <Link to="/cadastrar-investimentos">
                         Cadastrar Investimento
                     </Link>
                 </Menu.Item>
