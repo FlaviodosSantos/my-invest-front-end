@@ -1,8 +1,8 @@
 import "antd/dist/antd.css";
 import { Table, Button, message, Layout, Menu } from 'antd';
-import { render } from "@testing-library/react";
 import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import InvestimentoService from "../../service/InvestimentoService";
 
 const { Header, Content, Footer } = Layout;
 const { Column } = Table;
@@ -11,7 +11,25 @@ export default function ListarInvestimentos(){
 
     const [investimentos, setInvestimentos] = useState([]);
 
+    useEffect(() => {
+        refreshInvestimentos(); 
+        return () => { 
+
+        }
+    }, [])
+
+    async function refreshInvestimentos(){
+        InvestimentoService.retrieveAllInvestimentos()
+            .then(
+                response => {
+                    setInvestimentos(response.data)
+                }
+            )
+        
+    }
+
     function remove(record){
+        InvestimentoService.deleteInvestimento(record.codigo)
         message.success('Investimento removido com sucesso!');
     }
 
@@ -38,11 +56,12 @@ export default function ListarInvestimentos(){
                     <h2>INVESTIMENTOS</h2>
                         <Table dataSource={investimentos}>
                             <Column title="Código do ativo" dataIndex="codigoAtivo" key="codigoAtivo"/>
-                            <Column title="Valor" dataIndex="valor" key="valor"/>
+                            <Column title="Valor" dataIndex="valorCota" key="valorCota"/>
+                            <Column title="Categoria" dataIndex="categoria" key="categoria"/>
                             <Column title="Quantidade de cotas" dataIndex="quantidadeCotas" key="quantidadeCotas"/>
                             <Column title="Data da compra" dataIndex="dataCompra" key="dataCompra"/>
                             <Column title="Remover" key="atualizar"
-                                render={( text, record ) => (<Button onClick={() => remove(record)}
+                                render ={( text, record ) => (<Button onClick={() => remove(record)}
                                 type="primary">Remover</Button>)}
                             />
                             
