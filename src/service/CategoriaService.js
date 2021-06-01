@@ -4,8 +4,8 @@ const API_URL = 'http://localhost:8080'
 
 class CategoriaService{
 
-    retrieveAllCategoria(){
-        return axios.get(`${API_URL}/categoria`)
+    retrieveAllCategorias(){
+        return axios.get(`${API_URL}/categorias`)
     }
 
 }

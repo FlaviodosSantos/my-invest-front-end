@@ -11,17 +11,14 @@ export default function CadastrarInvestimento(){
 
 
     const [categorias, setCategorias] = useState([]);
-    const [categoria, setCategoria] = useState([null]);
+    const [categoria, setCategoria] = useState(null);
 
     useEffect(() => {
-        refreshCategorias(); 
-        return () => { 
-
-        }
-    }, [])
+        refreshCategorias();         
+    },[])
 
     async function refreshCategorias(){
-        CategoriaService.retrieveAllCategoria()
+        CategoriaService.retrieveAllCategorias()
             .then(
                 response => {
                     setCategorias(response.data)
@@ -40,6 +37,9 @@ export default function CadastrarInvestimento(){
     };
 
     const onFinish = (values) =>{
+        values.categoria = {
+            codigo: categoria
+        };
         InvestimentoService.saveInvestimento(values);
         message.success("investimento salvo com sucesso!")
     };
@@ -128,14 +128,13 @@ export default function CadastrarInvestimento(){
                                 
                             >
                                 <Select onChange={handleChange}>
-                                    {categorias.map((item) => {
-                                    return(
-                                        <Option key={item.id} value={item.id}>
-                                            {item.nome}
-                                        </Option>
-                                    )
+                                    {categorias.map((item, index) => {
+                                        return(
+                                            <Option key={item.codigo} value={item.id}>
+                                                {item.nome}
+                                            </Option>
+                                        )
                                     })}
-
                                 </Select>
                             </Form.Item>
 
