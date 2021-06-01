@@ -45,7 +45,7 @@ export default function CadastrarInvestimento(){
     };
 
     const onFinishFailed = (erroInfo) =>{
-        message.danger("investimento salvo com sucesso!")
+        message.danger("Ocorreu erro ao salvar investimento!")
         console.log('Failed:', erroInfo)
     };
 
