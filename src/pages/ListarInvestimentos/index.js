@@ -57,7 +57,7 @@ export default function ListarInvestimentos(){
                         <Table dataSource={investimentos}>
                             <Column title="Código do ativo" dataIndex="codigoAtivo" key="codigoAtivo"/>
                             <Column title="Valor" dataIndex="valorCota" key="valorCota"/>
-                            <Column title="Categoria" dataIndex="categoria" key="categoria"/>
+                            <Column title="Categoria" dataIndex="categoria" key="categoria" />
                             <Column title="Quantidade de cotas" dataIndex="quantidadeCotas" key="quantidadeCotas"/>
                             <Column title="Data da compra" dataIndex="dataCompra" key="dataCompra"/>
                             <Column title="Remover" key="atualizar"
